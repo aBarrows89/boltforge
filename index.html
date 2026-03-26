@@ -77,6 +77,16 @@
       "provider": {"@id": "https://boltforge.io/#organization"},
       "areaServed": "United States",
       "description": "Expert remote and on-site IT support for small and mid-size businesses. Help desk, monitoring, network management, and hardware support."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Do I own the code after launch?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — fully. Source code belongs to you. The monthly fee covers hosting and support, not a license. Take it anywhere, anytime."}},
+        {"@type": "Question", "name": "What's in the monthly fee?", "acceptedAnswer": {"@type": "Answer", "text": "US cloud hosting, SSL, database management, uptime monitoring, security patches, and email support. Grow It includes priority response and minor tweaks."}},
+        {"@type": "Question", "name": "Can I add features after launch?", "acceptedAnswer": {"@type": "Answer", "text": "Always. New modules are scoped and quoted separately, or bundled into a retainer. Modular architecture means nothing needs to be rebuilt."}},
+        {"@type": "Question", "name": "How long does a build take?", "acceptedAnswer": {"@type": "Answer", "text": "Own It: 3–4 weeks. Grow It: 6–10 weeks. Scale It scoped in consultation. Firm timeline given before work begins."}},
+        {"@type": "Question", "name": "Are there long-term contracts?", "acceptedAnswer": {"@type": "Answer", "text": "The build is a one-time project agreement. Hosting is month-to-month with 30 days notice to cancel. No lock-in, ever."}}
+      ]
     }
   ]
 }
@@ -101,9 +111,10 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--fb);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:default;}
 
-/* ── CUSTOM CURSOR ── */
+/* ── CUSTOM CURSOR (hidden on touch devices) ── */
 .cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;mix-blend-mode:difference;}
 .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(234,189,59,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .18s ease;}
+@media(hover:none),(pointer:coarse){.cursor,.cursor-ring{display:none!important;}}
 
 /* ── NAV ── */
 nav{
@@ -122,8 +133,9 @@ nav.scrolled{background:rgba(7,8,12,0.92);backdrop-filter:blur(20px);border-bott
 
 .nav-center{display:flex;align-items:center;gap:2px;}
 .nav-btn{background:none;border:none;font-family:var(--fb);font-size:14px;font-weight:400;color:var(--muted);padding:10px 16px;border-radius:6px;cursor:pointer;transition:color .18s,background .18s;letter-spacing:0.01em;min-height:44px;}
-.nav-btn:hover,.nav-btn.active{color:var(--text);background:rgba(255,255,255,0.05);}
+.nav-btn:hover,.nav-btn.active,.nav-btn:focus-visible{color:var(--text);background:rgba(255,255,255,0.05);}
 .nav-btn.active{color:var(--gold2);}
+.nav-right .nav-cta{min-height:44px;}
 
 .nav-right{display:flex;align-items:center;gap:12px;}
 .us-pill{display:flex;align-items:center;gap:6px;background:var(--bluedim);border:1px solid rgba(61,142,255,0.18);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:500;color:var(--blue);letter-spacing:0.04em;}
@@ -364,6 +376,7 @@ nav.scrolled{background:rgba(7,8,12,0.92);backdrop-filter:blur(20px);border-bott
 .sec-head em{font-style:normal;color:var(--gold);}
 
 .sec-sub{font-size:16px;font-weight:300;color:var(--muted);line-height:1.72;max-width:580px;margin-bottom:56px;}
+.svc-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:56px;}
 
 .svc-grid{
   display:grid;grid-template-columns:repeat(4,1fr);
@@ -595,10 +608,11 @@ textarea{resize:vertical;min-height:110px;}
 /* ── RESPONSIVE ── */
 @media(max-width:1000px){
   nav{padding:0 24px;}.wrap{padding:0 24px;}
-  .nav-center{display:none;}.nav-right .us-pill{display:none;}.hbg{display:flex;}
+  .nav-center{display:none;}.nav-right{display:none;}.hbg{display:flex;}
   .hero-h1{font-size:clamp(52px,12vw,88px);}
   .problem-grid{grid-template-columns:1fr 1fr;}
   .svc-grid{grid-template-columns:1fr 1fr;}
+  .svc-intro{grid-template-columns:1fr;gap:24px;}
   .how-layout{grid-template-columns:1fr;}
   .proof-grid{grid-template-columns:1fr;}
   .us-layout{grid-template-columns:1fr;gap:40px;}
@@ -641,10 +655,30 @@ textarea{resize:vertical;min-height:110px;}
   .nav-logo-text{font-size:20px;}
 }
 
+@media(max-width:480px){
+  .btn-row{flex-direction:column;}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center;text-align:center;}
+  .solution-strip{flex-direction:column;text-align:center;}
+  .solution-strip .btn-primary{width:100%;justify-content:center;}
+  .scroll-hint{display:none;}
+  .svc-hero-head{font-size:clamp(40px,11vw,72px);}
+}
 @media(max-width:400px){
   .hero-h1{font-size:clamp(40px,12vw,58px);}
   .wrap{padding:0 16px;}
   nav{padding:0 16px;}
+}
+
+/* ── FOCUS VISIBLE ── */
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-cta:focus-visible,.pkg-btn:focus-visible,.csubmit:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
+  .reveal{opacity:1;transform:none;}
+  .hero-grid{animation:none;}
+  .hero-scan{animation:none;display:none;}
 }
 </style>
 </head>
@@ -654,8 +688,8 @@ textarea{resize:vertical;min-height:110px;}
 <div class="cursor-ring" id="curR"></div>
 
 <!-- ── NAV ── -->
-<nav id="nav">
-  <a class="nav-logo" onclick="go('home')">
+<nav id="nav" aria-label="Main navigation">
+  <a class="nav-logo" href="/" onclick="event.preventDefault();go('home')">
     <div class="nav-logo-icon">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/>
@@ -672,7 +706,7 @@ textarea{resize:vertical;min-height:110px;}
     <div class="us-pill">🇺🇸 US Based & Operated</div>
     <button class="nav-cta" onclick="go('contact')">Get a Free Quote</button>
   </div>
-  <button class="hbg" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="hbg" onclick="toggleMob()" aria-label="Menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-menu" id="mob">
   <button class="nav-btn" onclick="go('home');toggleMob()">Home</button>
@@ -684,6 +718,7 @@ textarea{resize:vertical;min-height:110px;}
 <!-- ══════════════════════════════════
      HOME
 ══════════════════════════════════ -->
+<main>
 <div id="pg-home" class="page active">
 
   <section class="hero">
@@ -751,7 +786,7 @@ textarea{resize:vertical;min-height:110px;}
   <!-- SERVICES OVERVIEW -->
   <section class="sec">
     <div class="wrap">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:56px;">
+      <div class="svc-intro">
         <div class="reveal">
           <span class="overline">Full Stack. Anything.</span>
           <h2 class="sec-head">We build what<br>your business<br><em>actually needs.</em></h2>
@@ -849,26 +884,6 @@ textarea{resize:vertical;min-height:110px;}
     </div>
   </div>
 
-  <!-- SEO Content Block -->
-  <section style="padding:0;overflow:hidden;height:0;" aria-hidden="false">
-    <div style="position:absolute;left:-9999px;top:-9999px;">
-      <h2>Custom Business Software Development — US Based</h2>
-      <p>BoltForge is a US-based custom software development company building web applications, mobile apps, point-of-sale systems, business intranets, warehouse management systems, HR platforms, and IT support services for small and mid-size businesses across America. Every platform is built custom, owned by the client, and hosted on US infrastructure. No per-seat licensing fees. No vendor lock-in.</p>
-      <h3>Custom Web Application Development</h3>
-      <p>We build fully custom web apps, business portals, company intranets, employee dashboards, client portals, and internal tools for businesses of any size. Role-based access control, real-time data, and mobile-responsive design included in every build.</p>
-      <h3>Mobile App Development iOS Android</h3>
-      <p>Cross-platform and native mobile app development for iOS and Android. Field service apps, warehouse scanner apps, customer-facing delivery tracking, and more.</p>
-      <h3>POS and Inventory Management Systems</h3>
-      <p>Custom point-of-sale and inventory management systems for retail, distribution, and warehousing businesses. Multi-location support, barcode scanner integration, and real-time inventory tracking.</p>
-      <h3>IT Support and Managed Services</h3>
-      <p>Remote and on-site IT support for small and mid-size businesses. Help desk, proactive monitoring, Microsoft 365 administration, network setup, and hardware procurement.</p>
-      <h3>ATS Applicant Tracking System with Website Integration</h3>
-      <p>Custom applicant tracking systems integrated with your business website hiring forms. Manage job postings, applications, interviews, and onboarding in one platform.</p>
-      <h3>US Based Software Development Company</h3>
-      <p>100% US-based development team. No offshore outsourcing. All data hosted on US cloud infrastructure. Direct communication with the developer building your software.</p>
-    </div>
-  </section>
-
   <footer>
     <div class="wrap">
       <div class="foot-top">
@@ -909,7 +924,7 @@ textarea{resize:vertical;min-height:110px;}
         </div>
       </div>
       <div class="foot-bottom">
-        <div class="foot-copy">© 2025 BoltForge. All rights reserved.</div>
+        <div class="foot-copy">© 2026 BoltForge. All rights reserved.</div>
         <div class="foot-made">Built with <span>⚡</span> in the USA</div>
       </div>
     </div>
@@ -998,7 +1013,7 @@ textarea{resize:vertical;min-height:110px;}
         <div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div>
         <div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div></div>
       </div>
-      <div class="foot-bottom"><div class="foot-copy">© 2025 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
+      <div class="foot-bottom"><div class="foot-copy">© 2026 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
     </div>
   </footer>
 </div>
@@ -1090,7 +1105,7 @@ textarea{resize:vertical;min-height:110px;}
   <footer>
     <div class="wrap">
       <div class="foot-top"><div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div><div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div></div></div>
-      <div class="foot-bottom"><div class="foot-copy">© 2025 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
+      <div class="foot-bottom"><div class="foot-copy">© 2026 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
     </div>
   </footer>
 </div>
@@ -1115,7 +1130,7 @@ textarea{resize:vertical;min-height:110px;}
           </ul>
         </div>
         <div class="cform-wrap">
-          <div id="cform-body">
+          <form id="cform-body" onsubmit="event.preventDefault();submitForm();" novalidate>
             <div class="cform-title">Tell Us About Your Business</div>
             <div class="cform-sub">Free scoping conversation — no pressure, no obligation.</div>
             <div class="frow">
@@ -1131,8 +1146,8 @@ textarea{resize:vertical;min-height:110px;}
             <div class="fg"><label for="cf-pkg">Starting point</label><select id="cf-pkg"><option value="" disabled selected>Which package?</option><option>Own It (from $2,500)</option><option>Grow It (from $6,500)</option><option>Scale It (custom)</option><option>IT Support</option><option>Website</option><option>Not sure — need guidance</option></select></div>
             <div class="fg"><label for="cf-msg">What are you looking to build?</label><textarea id="cf-msg" placeholder="Tell us what software you're currently using, what's broken or missing, and what you'd build if you could build anything..."></textarea></div>
             <div class="checkbox-row"><input type="checkbox" id="cf-call"/><label for="cf-call">I'd prefer a phone or video call — please reach out to schedule.</label></div>
-            <button class="csubmit" onclick="submitForm()">Send My Request →</button>
-          </div>
+            <button type="submit" class="csubmit">Send My Request →</button>
+          </form>
           <div class="success-box" id="cform-success">
             <div class="success-icon">⚡</div>
             <h3>Request Received</h3>
@@ -1145,10 +1160,11 @@ textarea{resize:vertical;min-height:110px;}
   <footer>
     <div class="wrap">
       <div class="foot-top"><div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div><div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div></div></div>
-      <div class="foot-bottom"><div class="foot-copy">© 2025 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
+      <div class="foot-bottom"><div class="foot-copy">© 2026 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
     </div>
   </footer>
 </div>
+</main>
 
 <script>
 const pages=['home','services','pricing','contact'];
@@ -1165,24 +1181,31 @@ function go(id){
   initReveal();
 }
 
-function toggleMob(){document.getElementById('mob').classList.toggle('open');}
+function toggleMob(){
+  const mob=document.getElementById('mob');
+  mob.classList.toggle('open');
+  const hbg=document.querySelector('.hbg');
+  hbg.setAttribute('aria-expanded',mob.classList.contains('open'));
+}
 
 // NAV scroll
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
 });
 
-// Custom cursor
-const cur=document.getElementById('cur');
-const curR=document.getElementById('curR');
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
-  setTimeout(()=>{curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px';},60);
-});
-document.querySelectorAll('button,a,.svc,.proof,.step,.fsvc').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{curR.style.transform='translate(-50%,-50%) scale(1.8)';curR.style.borderColor='rgba(234,189,59,0.7)';});
-  el.addEventListener('mouseleave',()=>{curR.style.transform='translate(-50%,-50%) scale(1)';curR.style.borderColor='rgba(234,189,59,0.4)';});
-});
+// Custom cursor (skip on touch devices)
+if(window.matchMedia('(hover:hover)').matches){
+  const cur=document.getElementById('cur');
+  const curR=document.getElementById('curR');
+  document.addEventListener('mousemove',e=>{
+    cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+    setTimeout(()=>{curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px';},60);
+  });
+  document.querySelectorAll('button,a,.svc,.proof,.step,.fsvc').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{curR.style.transform='translate(-50%,-50%) scale(1.8)';curR.style.borderColor='rgba(234,189,59,0.7)';});
+    el.addEventListener('mouseleave',()=>{curR.style.transform='translate(-50%,-50%) scale(1)';curR.style.borderColor='rgba(234,189,59,0.4)';});
+  });
+}
 
 // Scroll reveal
 function initReveal(){
