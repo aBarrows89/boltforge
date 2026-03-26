@@ -649,15 +649,17 @@ textarea{resize:vertical;min-height:110px;}
   .us-sec{padding:50px 0;}
   .cta-band{padding:50px 0;}
 
-  /* -- Body text: 14-15px max, tighter line-height -- */
-  .sec-sub{font-size:14px;line-height:1.6;margin-bottom:36px;}
-  .prob-body{font-size:13px;line-height:1.55;}
-  .step-body{font-size:13px;line-height:1.55;}
-  .proof-body{font-size:13px;line-height:1.55;}
-  .us-text span{font-size:12px;line-height:1.5;}
-  .svc-desc{font-size:12px;line-height:1.5;}
-  .fsvc-desc{font-size:14px;line-height:1.55;}
-  .fsvc-list li{font-size:12px;}
+  /* -- Body text: tighter on mobile -- */
+  .sec-sub{font-size:13px;line-height:1.5;margin-bottom:28px;max-width:100%;}
+  .prob-body{font-size:12px;line-height:1.5;}
+  .step-body{font-size:12px;line-height:1.5;}
+  .proof-body{font-size:12px;line-height:1.5;}
+  .us-text span{font-size:11px;line-height:1.45;}
+  .svc-desc{font-size:11px;line-height:1.45;}
+  .fsvc-desc{font-size:13px;line-height:1.5;}
+  .fsvc-list li{font-size:11px;}
+  .fsvc-list{gap:3px!important;}
+  .svc-intro .sec-sub{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 
   /* -- Hero provoke: tighten first para, hide second on mobile -- */
   .hero-provoke{font-size:14px;line-height:1.55;margin-bottom:28px;max-width:100%;}
@@ -1491,6 +1493,8 @@ function go(id){
   if(navs[idx])document.getElementById(navs[idx]).classList.add('active');
   window.scrollTo({top:0,behavior:'instant'});
   document.getElementById('mob').classList.remove('open');
+  var hbg=document.querySelector('.hbg');
+  if(hbg)hbg.setAttribute('aria-expanded','false');
   initReveal();
 }
 
