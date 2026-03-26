@@ -258,6 +258,8 @@ nav.scrolled{background:rgba(7,8,12,0.92);backdrop-filter:blur(20px);border-bott
   max-width:600px;margin-bottom:48px;
   animation:fadeUp .7s .3s ease both;
 }
+.hero-provoke p{margin:0;}
+.hero-provoke-p2{margin-top:1em!important;}
 .hero-provoke strong{color:var(--text);font-weight:500;}
 
 .btn-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;animation:fadeUp .7s .38s ease both;}
@@ -638,27 +640,154 @@ textarea{resize:vertical;min-height:110px;}
   .fsvc-list{grid-template-columns:1fr;}
   .mod-inner{grid-template-columns:1fr;}
 }
+
+/* ── MOBILE (768px) — tighten text-heavy sections ── */
+@media(max-width:768px){
+  /* -- Global section spacing: 110px -> 50px -- */
+  .sec{padding:50px 0;}
+  .problem-sec{padding:50px 0;}
+  .us-sec{padding:50px 0;}
+  .cta-band{padding:50px 0;}
+
+  /* -- Body text: 14-15px max, tighter line-height -- */
+  .sec-sub{font-size:14px;line-height:1.6;margin-bottom:36px;}
+  .prob-body{font-size:13px;line-height:1.55;}
+  .step-body{font-size:13px;line-height:1.55;}
+  .proof-body{font-size:13px;line-height:1.55;}
+  .us-text span{font-size:12px;line-height:1.5;}
+  .svc-desc{font-size:12px;line-height:1.5;}
+  .fsvc-desc{font-size:14px;line-height:1.55;}
+  .fsvc-list li{font-size:12px;}
+
+  /* -- Hero provoke: tighten first para, hide second on mobile -- */
+  .hero-provoke{font-size:14px;line-height:1.55;margin-bottom:28px;max-width:100%;}
+  .hero-provoke br{display:none;}
+  .hero-provoke-p2{display:none;}
+
+  /* -- Heading scale-down -- */
+  .problem-head{font-size:clamp(26px,7vw,40px);margin-bottom:14px;}
+  .problem-head br{display:none;}
+  .sec-head{font-size:clamp(26px,7vw,40px);margin-bottom:12px;}
+  .sec-head br{display:none;}
+  .solution-text{font-size:clamp(18px,4.5vw,26px);}
+  .solution-text br{display:none;}
+  .cta-big{font-size:clamp(34px,10vw,56px);margin-bottom:18px;}
+  .cta-band p[style]{font-size:15px!important;margin-bottom:28px!important;}
+
+  /* -- Problem cards: single column, tighter padding -- */
+  .problem-grid{grid-template-columns:1fr;margin-top:28px;}
+  .prob-card{padding:22px 20px;}
+  .prob-num{font-size:44px;margin-bottom:8px;}
+  .prob-title{font-size:17px;margin-bottom:6px;}
+
+  /* -- Solution strip -- */
+  .solution-strip{margin-top:32px;padding:24px 20px;flex-direction:column;gap:14px;text-align:center;}
+  .solution-strip .btn-primary{width:100%;justify-content:center;}
+
+  /* -- Service grid: single column -- */
+  .svc-grid{grid-template-columns:1fr;}
+  .svc{padding:22px 18px;}
+  .svc-intro{gap:14px;margin-bottom:32px;}
+
+  /* -- How It Works: tighter steps -- */
+  .how-layout{gap:32px;}
+  .step{padding:18px 0;gap:14px;grid-template-columns:42px 1fr;}
+  .step-n{font-size:38px;}
+  .step-title{font-size:17px;margin-bottom:4px;}
+
+  /* -- Proof cards -- */
+  .proof{padding:22px 18px;}
+  .proof-title{font-size:20px;margin-bottom:6px;}
+  .proof-tag{font-size:11px;padding:3px 8px;margin-bottom:12px;}
+  .proof-chips{gap:4px;}
+  .chip{font-size:11px;padding:3px 7px;}
+
+  /* -- US section -- */
+  .us-list{gap:14px;margin-top:20px;}
+  .us-text strong{font-size:13px;}
+  .us-stats{gap:10px;}
+  .us-stat{padding:18px 14px;}
+  .us-stat-val{font-size:38px;}
+  .us-stat-label{font-size:12px;}
+
+  /* -- Hero metrics -- */
+  .hero-metrics{margin-top:40px;padding-top:28px;gap:16px;}
+  .metric-val{font-size:36px;}
+  .metric-label{font-size:11px;}
+
+  /* -- Overlines -- */
+  .overline{font-size:12px;letter-spacing:.14em;margin-bottom:8px;}
+
+  /* -- Contact form: full-width fields, usable sizing -- */
+  .contact-layout{gap:28px;}
+  .frow{grid-template-columns:1fr;}
+  .cform-wrap{padding:22px 16px;}
+  .cform-title{font-size:24px;}
+  .cform-sub{font-size:13px;margin-bottom:22px;}
+  input:not([type="checkbox"]),select,textarea{font-size:16px;padding:14px 15px;}
+  .csubmit{font-size:14px;padding:14px;}
+
+  /* -- Pricing -- */
+  .pkg{padding:28px 20px;}
+  .pkg-name{font-size:34px;}
+  .pkg-price{font-size:44px;}
+  .pkg-line{font-size:12px;margin-bottom:20px;padding-bottom:20px;}
+  .pkg-feats li{font-size:12px;}
+  .own-card{padding:20px 16px;}
+  .own-title{font-size:16px;}
+  .own-desc{font-size:12px;line-height:1.55;}
+  .own-n{font-size:34px;}
+
+  /* -- FAQ -- */
+  .faq-q{font-size:13px;}
+  .faq-a{font-size:13px;line-height:1.55;}
+  .faq-grid{gap:20px 32px;margin-top:36px;}
+
+  /* -- Footer -- */
+  footer{padding:32px 0 24px;}
+  .foot-tagline{font-size:11px;}
+  .foot-link{font-size:13px;}
+  .foot-copy{font-size:12px;}
+  .foot-bottom{padding-top:24px;}
+
+  /* -- Services page hero -- */
+  .svc-hero{padding:60px 0 48px;}
+  .svc-hero p[style]{font-size:15px!important;line-height:1.6!important;}
+
+  /* -- Legal pages -- */
+  .legal-hero{padding:60px 0 32px;}
+  .legal-body p,.legal-body li{font-size:13px;line-height:1.65;}
+  .legal-body h2{font-size:20px;margin:32px 0 10px;}
+  .legal-body h3{font-size:16px;margin:24px 0 8px;}
+
+  /* -- Modular section on services page -- */
+  .modular{padding:32px 24px;margin-top:48px;}
+}
+
 @media(max-width:640px){
   .problem-grid{grid-template-columns:1fr;}
   .svc-grid{grid-template-columns:1fr;}
   .hero-metrics{gap:20px;}
   .metric-val{font-size:36px;}
-  .sec{padding:64px 0;}
+  .sec{padding:44px 0;}
+  .problem-sec{padding:44px 0;}
+  .us-sec{padding:44px 0;}
+  .cta-band{padding:44px 0;}
   .hero-h1{font-size:clamp(44px,13vw,68px);}
   .hero-tagline{font-size:14px;letter-spacing:.04em;padding-left:14px;}
-  .hero-provoke{font-size:15px;}
+  .hero-provoke{font-size:14px;line-height:1.5;}
   .hero-flag{font-size:11px;padding:6px 14px;}
   .btn-primary,.btn-ghost{padding:14px 22px;font-size:14px;}
   .btn-row{gap:10px;}
-  .prob-card{padding:24px 20px;}
-  .solution-strip{padding:24px;flex-direction:column;gap:20px;}
+  .prob-card{padding:20px 18px;}
+  .solution-strip{padding:22px 18px;flex-direction:column;gap:14px;}
   .solution-strip .btn-primary{width:100%;justify-content:center;}
   .us-stat-val{font-size:38px;}
   .us-stat{padding:20px 16px;}
-  .cta-big{font-size:clamp(36px,11vw,64px);}
-  .pkg{padding:32px 24px;}
-  .own-card{padding:24px;}
-  .cform-wrap{padding:24px 18px;}
+  .cta-big{font-size:clamp(32px,11vw,52px);}
+  .pkg{padding:24px 18px;}
+  .own-card{padding:20px 16px;}
+  .cform-wrap{padding:20px 16px;}
   .wrap{padding:0 18px;}
   .foot-top{flex-direction:column;gap:28px;}
   .foot-nav{gap:28px;}
@@ -674,6 +803,10 @@ textarea{resize:vertical;min-height:110px;}
   .solution-strip .btn-primary{width:100%;justify-content:center;}
   .scroll-hint{display:none;}
   .svc-hero-head{font-size:clamp(40px,11vw,72px);}
+  .sec{padding:36px 0;}
+  .problem-sec{padding:36px 0;}
+  .us-sec{padding:36px 0;}
+  .cta-band{padding:36px 0;}
 }
 @media(max-width:400px){
   .hero-h1{font-size:clamp(40px,12vw,58px);}
@@ -749,10 +882,10 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
         <span class="line2" data-text="OWNED BY YOU.">OWNED BY YOU.</span>
       </h1>
       <p class="hero-tagline">Masterful Custom Software &nbsp;·&nbsp; Expert IT Support &nbsp;·&nbsp; US Based and Operated</p>
-      <p class="hero-provoke">
-        You're paying <strong>monthly forever</strong> for software built for everyone — which means it fits no one. It doesn't talk to your other tools. It doesn't do that one thing you actually need. And the price goes up every year whether you like it or not.<br><br>
-        <strong>There's another way.</strong> Tell us how your business runs. We build the platform around it. You own it permanently.
-      </p>
+      <div class="hero-provoke">
+        <p>You're paying <strong>monthly forever</strong> for software built for everyone — which means it fits no one. It doesn't talk to your other tools. It doesn't do that one thing you actually need. And the price goes up every year whether you like it or not.</p>
+        <p class="hero-provoke-p2"><strong>There's another way.</strong> Tell us how your business runs. We build the platform around it. You own it permanently.</p>
+      </div>
       <div class="btn-row">
         <a href="#contact" class="btn-primary" onclick="event.preventDefault();go('contact')">Start the conversation <span class="arr">→</span></a>
         <a href="#services" class="btn-ghost" onclick="event.preventDefault();go('services')">See what we build</a>
@@ -1165,7 +1298,7 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
             </div>
             <div class="fg"><label for="cf-pkg">Starting point</label><select id="cf-pkg"><option value="" disabled selected>Which package?</option><option>Own It (from $2,500)</option><option>Grow It (from $6,500)</option><option>Scale It (custom)</option><option>IT Support</option><option>Website</option><option>Not sure — need guidance</option></select></div>
             <div class="fg"><label for="cf-msg">What are you looking to build?</label><textarea id="cf-msg" placeholder="Tell us what software you're currently using, what's broken or missing, and what you'd build if you could build anything..."></textarea></div>
-            <div class="checkbox-row"><input type="checkbox" id="cf-call"/><label for="cf-call">I'd prefer a phone or video call — please reach out to schedule.</label></div>
+            <div class="fg"><label for="cf-contact">Preferred Contact Method</label><select id="cf-contact"><option value="any">Any</option><option value="email">Email</option><option value="phone">Phone Call</option><option value="video">Video Call</option><option value="text">Text Message</option></select></div>
             <button type="submit" class="csubmit">Send My Request →</button>
           </form>
           <div class="success-box" id="cform-success">
@@ -1411,18 +1544,17 @@ function submitForm(){
   const size=document.getElementById('cf-sz').value;
   const pkg=document.getElementById('cf-pkg').value;
   const msg=document.getElementById('cf-msg').value.trim();
-  const wantsCall=document.getElementById('cf-call').checked;
+  const contactPref=document.getElementById('cf-contact').value;
   const message=[
     msg,
     industry?'Industry: '+industry:'',
     size?'Company size: '+size:'',
-    pkg?'Package interest: '+pkg:'',
-    wantsCall?'Wants a call: Yes':''
+    pkg?'Package interest: '+pkg:''
   ].filter(Boolean).join('\n');
   fetch('https://app.boltforge.io/api/leads/from-website',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name:name,email:em,company:company,message:message,source:'website'})
+    body:JSON.stringify({name:name,email:em,company:company,message:message,source:'website',contactPreference:contactPref})
   }).finally(()=>{
     document.getElementById('cform-body').style.display='none';
     document.getElementById('cform-success').style.display='block';
