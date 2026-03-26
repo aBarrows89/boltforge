@@ -573,6 +573,22 @@ footer{border-top:1px solid var(--border);padding:48px 0 36px;}
 .faq-a{font-size:14px;color:var(--muted);line-height:1.65;}
 
 /* ══════════════════════════════════
+   LEGAL PAGES
+══════════════════════════════════ */
+.legal-hero{padding:88px 0 48px;}
+.legal-body{max-width:780px;padding-bottom:88px;}
+.legal-body h2{font-family:var(--ff);font-size:24px;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:.04em;margin:48px 0 14px;}
+.legal-body h3{font-family:var(--ff);font-size:18px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.04em;margin:32px 0 10px;}
+.legal-body p,.legal-body li{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:14px;}
+.legal-body ul{list-style:none;padding:0;}
+.legal-body ul li{padding-left:20px;position:relative;}
+.legal-body ul li::before{content:'→';position:absolute;left:0;color:var(--gold);}
+.legal-body strong{color:var(--text);font-weight:600;}
+.legal-body a{color:var(--gold);text-decoration:underline;text-underline-offset:2px;}
+.legal-body a:hover{color:var(--gold2);}
+.legal-updated{font-size:12px;color:var(--dim);letter-spacing:.04em;margin-top:8px;}
+
+/* ══════════════════════════════════
    CONTACT PAGE
 ══════════════════════════════════ */
 .contact-layout{display:grid;grid-template-columns:400px 1fr;gap:88px;align-items:start;}
@@ -914,6 +930,13 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
             </ul>
           </div>
           <div class="foot-col">
+            <div class="foot-col-head">Legal</div>
+            <ul class="foot-links">
+              <li><button class="foot-link" onclick="go('terms')">Terms & Conditions</button></li>
+              <li><button class="foot-link" onclick="go('refund')">Refund Policy</button></li>
+            </ul>
+          </div>
+          <div class="foot-col">
             <div class="foot-col-head">Contact</div>
             <ul class="foot-links">
               <li><a class="foot-link" href="mailto:hello@boltforge.io">hello@boltforge.io</a></li>
@@ -1011,7 +1034,7 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
     <div class="wrap">
       <div class="foot-top">
         <div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div>
-        <div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div></div>
+        <div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div><div class="foot-col"><div class="foot-col-head">Legal</div><ul class="foot-links"><li><button class="foot-link" onclick="go('terms')">Terms & Conditions</button></li><li><button class="foot-link" onclick="go('refund')">Refund Policy</button></li></ul></div></div>
       </div>
       <div class="foot-bottom"><div class="foot-copy">© 2026 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
     </div>
@@ -1104,7 +1127,7 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
   </div>
   <footer>
     <div class="wrap">
-      <div class="foot-top"><div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div><div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div></div></div>
+      <div class="foot-top"><div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div><div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div><div class="foot-col"><div class="foot-col-head">Legal</div><ul class="foot-links"><li><button class="foot-link" onclick="go('terms')">Terms & Conditions</button></li><li><button class="foot-link" onclick="go('refund')">Refund Policy</button></li></ul></div></div></div>
       <div class="foot-bottom"><div class="foot-copy">© 2026 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
     </div>
   </footer>
@@ -1159,7 +1182,167 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
   </section>
   <footer>
     <div class="wrap">
-      <div class="foot-top"><div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div><div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div></div></div>
+      <div class="foot-top"><div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div><div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div><div class="foot-col"><div class="foot-col-head">Legal</div><ul class="foot-links"><li><button class="foot-link" onclick="go('terms')">Terms & Conditions</button></li><li><button class="foot-link" onclick="go('refund')">Refund Policy</button></li></ul></div></div></div>
+      <div class="foot-bottom"><div class="foot-copy">© 2026 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ══════════════════════════════════
+     TERMS & CONDITIONS
+══════════════════════════════════ -->
+<div id="pg-terms" class="page">
+  <section class="sec" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="legal-hero">
+        <span class="overline">Legal</span>
+        <h1 class="svc-hero-head" style="font-size:clamp(40px,8vw,80px);margin-bottom:8px;">TERMS &<br><em>CONDITIONS</em></h1>
+        <p class="legal-updated">Last updated: March 26, 2026</p>
+      </div>
+      <div class="legal-body">
+        <p>These Terms and Conditions ("Terms") govern your use of the BoltForge website and all services provided by BoltForge ("we," "us," or "our"). By engaging our services or using this website, you agree to be bound by these Terms in full. If you do not agree, do not use our services.</p>
+
+        <h2>1. Services</h2>
+        <p>BoltForge provides custom software development, web application development, mobile application development, IT support, and related technology services. All services are scoped, quoted, and agreed upon in writing before work begins. A signed project agreement or statement of work ("SOW") governs each engagement.</p>
+
+        <h2>2. Project Agreements & Scope</h2>
+        <p>Each project is governed by a separate SOW that defines the scope of work, deliverables, timeline, and pricing. Changes to scope after signing require a written change order and may result in additional fees. BoltForge is not obligated to perform work outside the agreed-upon scope.</p>
+
+        <h2>3. Pricing & Payment</h2>
+        <ul>
+          <li><strong>Build fees</strong> are one-time charges scoped per project, as outlined in the SOW. Payment schedules (e.g., milestone-based or phased) will be specified in the agreement.</li>
+          <li><strong>Monthly hosting and support fees</strong> are billed on a recurring basis and are due on the date specified in your agreement. Hosting fees cover cloud infrastructure, SSL, monitoring, and support as described in your plan tier.</li>
+          <li>Late payments may incur a fee of 1.5% per month on the outstanding balance, or the maximum rate permitted by applicable law, whichever is less.</li>
+          <li>BoltForge reserves the right to suspend services for accounts with balances overdue by more than 30 days.</li>
+        </ul>
+
+        <h2>4. Intellectual Property & Ownership</h2>
+        <p>Upon full payment of all project fees, the client receives <strong>full ownership of all custom source code</strong> developed as part of their project. This includes the right to modify, extend, redistribute, and host the code independently.</p>
+        <ul>
+          <li>Third-party libraries, frameworks, and open-source components remain subject to their respective licenses.</li>
+          <li>BoltForge retains the right to reuse general-purpose techniques, patterns, and non-client-specific code in future projects.</li>
+          <li>BoltForge may reference the project (without disclosing confidential details) in portfolio materials unless otherwise agreed in writing.</li>
+        </ul>
+
+        <h2>5. Hosting & Support</h2>
+        <p>Monthly hosting and support plans are provided on a <strong>month-to-month basis</strong>. Either party may cancel with 30 days' written notice. Upon cancellation:</p>
+        <ul>
+          <li>BoltForge will provide the client with a full export of their application code, database, and any hosted assets within 14 business days.</li>
+          <li>BoltForge is not responsible for hosting, uptime, or support after the cancellation effective date.</li>
+          <li>The client is responsible for migrating to their own infrastructure or another provider.</li>
+        </ul>
+
+        <h2>6. Client Responsibilities</h2>
+        <p>The client agrees to:</p>
+        <ul>
+          <li>Provide timely feedback, approvals, and content required for project progress.</li>
+          <li>Designate a primary point of contact authorized to make decisions on behalf of their organization.</li>
+          <li>Ensure that all content, data, and materials provided to BoltForge are owned by or properly licensed to the client.</li>
+        </ul>
+        <p>Delays caused by the client (e.g., late feedback, unavailable resources) may result in adjusted timelines and do not constitute grounds for refund.</p>
+
+        <h2>7. Warranties & Disclaimers</h2>
+        <p>BoltForge warrants that all deliverables will substantially conform to the specifications outlined in the SOW for a period of <strong>30 days after launch</strong> ("warranty period"). During this period, BoltForge will correct defects at no additional charge.</p>
+        <p>Beyond the warranty period, all services are provided <strong>"as is."</strong> BoltForge makes no guarantees regarding uptime, performance, third-party service availability, or fitness for a particular purpose beyond what is explicitly stated in the SOW.</p>
+
+        <h2>8. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, BoltForge's total liability for any claim arising from or related to our services shall not exceed the total amount paid by the client under the applicable SOW. BoltForge shall not be liable for indirect, incidental, consequential, or punitive damages, including lost profits, lost data, or business interruption.</p>
+
+        <h2>9. Confidentiality</h2>
+        <p>Both parties agree to keep confidential any proprietary or sensitive information shared during the engagement. This includes business processes, trade secrets, user data, and technical architecture. Confidentiality obligations survive termination of the agreement.</p>
+
+        <h2>10. Termination</h2>
+        <p>Either party may terminate a project agreement with written notice. See our <button class="foot-link" onclick="go('refund')" style="display:inline;font-size:inherit;color:var(--gold);text-decoration:underline;">Refund Policy</button> for details on refunds and fees upon cancellation.</p>
+        <p>BoltForge reserves the right to terminate an engagement immediately if the client engages in abusive conduct, fails to pay invoices for more than 60 days, or requests work that is illegal or unethical.</p>
+
+        <h2>11. Governing Law</h2>
+        <p>These Terms are governed by and construed in accordance with the laws of the Commonwealth of Pennsylvania, United States, without regard to conflict of law principles. Any disputes shall be resolved in the courts of Pennsylvania.</p>
+
+        <h2>12. Modifications</h2>
+        <p>BoltForge reserves the right to update these Terms at any time. Material changes will be posted on this page with an updated effective date. Continued use of our services after changes constitutes acceptance of the revised Terms.</p>
+
+        <h2>13. Contact</h2>
+        <p>For questions about these Terms, contact us at <a href="mailto:hello@boltforge.io">hello@boltforge.io</a>.</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap">
+      <div class="foot-top"><div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div><div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div><div class="foot-col"><div class="foot-col-head">Legal</div><ul class="foot-links"><li><button class="foot-link" onclick="go('terms')">Terms & Conditions</button></li><li><button class="foot-link" onclick="go('refund')">Refund Policy</button></li></ul></div></div></div>
+      <div class="foot-bottom"><div class="foot-copy">© 2026 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ══════════════════════════════════
+     REFUND POLICY
+══════════════════════════════════ -->
+<div id="pg-refund" class="page">
+  <section class="sec" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="legal-hero">
+        <span class="overline">Legal</span>
+        <h1 class="svc-hero-head" style="font-size:clamp(40px,8vw,80px);margin-bottom:8px;">REFUND<br><em>POLICY</em></h1>
+        <p class="legal-updated">Last updated: March 26, 2026</p>
+      </div>
+      <div class="legal-body">
+        <p>This Refund Policy applies to all custom software development, IT support, and related services provided by BoltForge ("we," "us," or "our"). By engaging our services, you acknowledge and agree to the terms outlined below.</p>
+
+        <h2>1. Completed Software — No Refunds</h2>
+        <p>Custom software that has been <strong>built, delivered, and deployed</strong> is not eligible for a refund. Because every BoltForge project is custom-built to the client's specifications, completed deliverables represent labor, expertise, and resources that cannot be recovered or resold.</p>
+        <p>This applies to:</p>
+        <ul>
+          <li>Fully delivered projects that meet the specifications outlined in the signed statement of work (SOW)</li>
+          <li>Projects that have been deployed to production, regardless of whether the client has begun using the platform</li>
+          <li>Source code that has been transferred to the client</li>
+        </ul>
+
+        <h2>2. Cancellation During Development — Prorated Refund</h2>
+        <p>If a project is cancelled by the client <strong>before completion</strong>, BoltForge will issue a prorated refund calculated as follows:</p>
+
+        <h3>What the client pays for:</h3>
+        <ul>
+          <li><strong>Labor at standard rates:</strong> All hours worked by BoltForge developers, designers, and engineers up to the date of cancellation, billed at our standard labor rate of <strong>$125 per hour</strong></li>
+          <li><strong>Services rendered:</strong> Any third-party services procured on behalf of the client (e.g., domain registration, cloud infrastructure provisioning, software licenses, API subscriptions) that have already been paid for or cannot be reversed</li>
+          <li><strong>Milestone deliverables:</strong> Any completed project milestones as defined in the SOW, billed at the milestone rate agreed upon in the contract</li>
+        </ul>
+
+        <h3>Refund calculation:</h3>
+        <p>The refund amount equals the <strong>total amount paid to date</strong>, minus the sum of labor costs (hours worked x $125/hr), third-party fees already incurred, and any completed milestone charges. If the cost of work performed exceeds the amount paid, the client will be invoiced for the remaining balance.</p>
+
+        <h3>Cancellation process:</h3>
+        <ul>
+          <li>Cancellation must be submitted in writing via email to <a href="mailto:hello@boltforge.io">hello@boltforge.io</a></li>
+          <li>BoltForge will provide an itemized breakdown of all work completed and fees incurred within <strong>10 business days</strong> of the cancellation request</li>
+          <li>Refunds will be processed within <strong>30 business days</strong> of the finalized cancellation statement</li>
+          <li>All work product completed up to the cancellation date remains the property of the client, subject to full payment of amounts owed</li>
+        </ul>
+
+        <h2>3. Monthly Hosting & Support</h2>
+        <p>Monthly hosting and support fees are billed in advance and are <strong>non-refundable for the current billing period</strong>. Clients may cancel hosting and support with 30 days' written notice. Cancellation takes effect at the end of the current billing cycle.</p>
+        <ul>
+          <li>No partial-month refunds will be issued</li>
+          <li>Upon cancellation, BoltForge will provide a full code and data export within 14 business days</li>
+          <li>The client is responsible for migrating to their own hosting after the cancellation effective date</li>
+        </ul>
+
+        <h2>4. IT Support Services</h2>
+        <p>IT support services billed on a per-incident or hourly basis are non-refundable once the service has been rendered. For monthly managed IT plans, the same cancellation terms as hosting apply (30 days' notice, non-refundable for the current period).</p>
+
+        <h2>5. Disputes</h2>
+        <p>If you believe a charge is incorrect or wish to dispute a refund calculation, contact us at <a href="mailto:hello@boltforge.io">hello@boltforge.io</a> within 30 days of receiving the itemized statement. We will review the dispute in good faith and respond within 10 business days.</p>
+
+        <h2>6. Contact</h2>
+        <p>For refund requests or questions about this policy, contact us at:</p>
+        <p><strong>BoltForge</strong><br><a href="mailto:hello@boltforge.io">hello@boltforge.io</a><br>United States</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap">
+      <div class="foot-top"><div class="foot-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><polygon points="14,2 6,14 11,14 9,22 18,10 13,10" fill="#07080C"/></svg></div><div class="foot-logo-text">Bolt<span>Forge</span></div></div><div class="foot-tagline">Masterful Custom Software · Expert IT Support · US Based and Operated</div></div><div class="foot-nav"><div class="foot-col"><div class="foot-col-head">Navigate</div><ul class="foot-links"><li><button class="foot-link" onclick="go('home')">Home</button></li><li><button class="foot-link" onclick="go('services')">What We Build</button></li><li><button class="foot-link" onclick="go('pricing')">Pricing</button></li><li><button class="foot-link" onclick="go('contact')">Contact</button></li></ul></div><div class="foot-col"><div class="foot-col-head">Legal</div><ul class="foot-links"><li><button class="foot-link" onclick="go('terms')">Terms & Conditions</button></li><li><button class="foot-link" onclick="go('refund')">Refund Policy</button></li></ul></div></div></div>
       <div class="foot-bottom"><div class="foot-copy">© 2026 BoltForge. All rights reserved.</div><div class="foot-made">Built with <span>⚡</span> in the USA</div></div>
     </div>
   </footer>
@@ -1167,8 +1350,8 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
 </main>
 
 <script>
-const pages=['home','services','pricing','contact'];
-const navs=['nb-home','nb-services','nb-pricing',null];
+const pages=['home','services','pricing','contact','terms','refund'];
+const navs=['nb-home','nb-services','nb-pricing',null,null,null];
 
 function go(id){
   pages.forEach(p=>document.getElementById('pg-'+p).classList.remove('active'));
