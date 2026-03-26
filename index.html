@@ -1397,25 +1397,29 @@ function initReveal(){
 }
 initReveal();
 
-// Contact form
+// Contact form → BoltForge HQ leads pipeline
 function submitForm(){
   const fn=document.getElementById('cf-fn').value.trim();
   const em=document.getElementById('cf-em').value.trim();
   if(!fn||!em){alert('Please enter your name and email.');return;}
-  const payload={
-    name:fn+' '+document.getElementById('cf-ln').value.trim(),
-    email:em,
-    company:document.getElementById('cf-co').value.trim(),
-    industry:document.getElementById('cf-ind').value,
-    size:document.getElementById('cf-sz').value,
-    package:document.getElementById('cf-pkg').value,
-    message:document.getElementById('cf-msg').value.trim(),
-    wants_call:document.getElementById('cf-call').checked?'Yes':'No'
-  };
-  fetch('https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID',{
+  const name=fn+' '+document.getElementById('cf-ln').value.trim();
+  const company=document.getElementById('cf-co').value.trim();
+  const industry=document.getElementById('cf-ind').value;
+  const size=document.getElementById('cf-sz').value;
+  const pkg=document.getElementById('cf-pkg').value;
+  const msg=document.getElementById('cf-msg').value.trim();
+  const wantsCall=document.getElementById('cf-call').checked;
+  const message=[
+    msg,
+    industry?'Industry: '+industry:'',
+    size?'Company size: '+size:'',
+    pkg?'Package interest: '+pkg:'',
+    wantsCall?'Wants a call: Yes':''
+  ].filter(Boolean).join('\n');
+  fetch('https://app.boltforge.io/api/leads/from-website',{
     method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify(payload)
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:name,email:em,company:company,message:message,source:'website'})
   }).finally(()=>{
     document.getElementById('cform-body').style.display='none';
     document.getElementById('cform-success').style.display='block';
