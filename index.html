@@ -146,8 +146,9 @@ nav.scrolled{background:rgba(7,8,12,0.92);backdrop-filter:blur(20px);border-bott
 
 .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
 .hbg span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:.3s;}
-.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;z-index:499;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px 24px;flex-direction:column;gap:4px;}
+.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;z-index:499;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px 24px;flex-direction:column;gap:4px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .mob-menu.open{display:flex;}
+body.mob-open{overflow:hidden;position:fixed;width:100%;}
 .mob-menu .nav-btn{font-size:17px;padding:14px 16px;text-align:left;}
 .mob-menu .nav-cta{margin-top:10px;padding:14px;text-align:center;font-size:15px;border-radius:8px;display:block;}
 
@@ -1583,9 +1584,12 @@ function go(id,push){
   const idx=pages.indexOf(id);
   if(navs[idx])document.getElementById(navs[idx]).classList.add('active');
   window.scrollTo({top:0,behavior:'instant'});
-  document.getElementById('mob').classList.remove('open');
+  var mob=document.getElementById('mob');
+  var wasOpen=mob.classList.contains('open');
+  mob.classList.remove('open');
   var hbg=document.querySelector('.hbg');
   if(hbg)hbg.setAttribute('aria-expanded','false');
+  if(wasOpen){document.body.classList.remove('mob-open');document.body.style.top='';}
   if(push&&pathMap[id])history.pushState({page:id},'',(pathMap[id]));
   document.title=id==='home'?'BoltForge — Custom Software & IT Support | US Based':'BoltForge — '+id.charAt(0).toUpperCase()+id.slice(1);
   initReveal();
@@ -1607,8 +1611,10 @@ window.addEventListener('popstate',function(e){
 function toggleMob(){
   const mob=document.getElementById('mob');
   mob.classList.toggle('open');
-  const hbg=document.querySelector('.hbg');
-  hbg.setAttribute('aria-expanded',mob.classList.contains('open'));
+  const isOpen=mob.classList.contains('open');
+  document.querySelector('.hbg').setAttribute('aria-expanded',isOpen);
+  if(isOpen){document.body.classList.add('mob-open');document.body.dataset.scrollY=window.scrollY;document.body.style.top=(-window.scrollY)+'px';}
+  else{document.body.classList.remove('mob-open');document.body.style.top='';window.scrollTo(0,parseInt(document.body.dataset.scrollY||'0'));}
 }
 
 // NAV scroll
