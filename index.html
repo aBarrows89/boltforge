@@ -146,6 +146,9 @@ nav.scrolled{background:rgba(7,8,12,0.92);backdrop-filter:blur(20px);border-bott
 
 .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
 .hbg span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:.3s;}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hbg.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 .mob-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;z-index:499;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px 24px;flex-direction:column;gap:4px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .mob-menu.open{display:flex;}
 body.mob-open{overflow:hidden;position:fixed;width:100%;}
@@ -173,6 +176,9 @@ body.mob-open{overflow:hidden;position:fixed;width:100%;}
 @keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes borderFlow{0%{border-color:var(--goldbd)}50%{border-color:rgba(234,189,59,0.5)}100%{border-color:var(--goldbd)}}
 
+.page-enter{animation:pageFade .3s ease both;}
+@keyframes pageFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.visible{opacity:1;transform:none;}
 .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}.reveal-d5{transition-delay:.5s}
@@ -182,6 +188,7 @@ body.mob-open{overflow:hidden;position:fixed;width:100%;}
 ══════════════════════════════════ */
 .hero{
   min-height:100vh;
+  min-height:100dvh;
   display:flex;align-items:center;
   position:relative;overflow:hidden;
 }
@@ -202,6 +209,24 @@ body.mob-open{overflow:hidden;position:fixed;width:100%;}
 }
 
 .hero-scan{display:none;}
+
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;}
+.hero-particles span{position:absolute;width:4px;height:4px;background:var(--gold);border-radius:50%;opacity:0;animation:particleFloat 6s ease-in-out infinite;}
+.hero-particles span:nth-child(1){left:10%;top:20%;animation-delay:0s;animation-duration:7s;}
+.hero-particles span:nth-child(2){left:25%;top:60%;animation-delay:1s;animation-duration:5s;}
+.hero-particles span:nth-child(3){left:50%;top:30%;animation-delay:2s;animation-duration:8s;}
+.hero-particles span:nth-child(4){left:70%;top:70%;animation-delay:0.5s;animation-duration:6s;}
+.hero-particles span:nth-child(5){left:85%;top:15%;animation-delay:3s;animation-duration:7s;}
+.hero-particles span:nth-child(6){left:40%;top:80%;animation-delay:1.5s;animation-duration:5.5s;}
+.hero-particles span:nth-child(7){left:60%;top:45%;animation-delay:2.5s;animation-duration:6.5s;width:3px;height:3px;}
+.hero-particles span:nth-child(8){left:15%;top:75%;animation-delay:4s;animation-duration:8s;width:5px;height:5px;}
+@keyframes particleFloat{
+  0%{opacity:0;transform:translateY(0) scale(0);}
+  15%{opacity:0.6;transform:translateY(-20px) scale(1);}
+  50%{opacity:0.3;transform:translateY(-60px) scale(0.8);}
+  85%{opacity:0.5;transform:translateY(-100px) scale(1.1);}
+  100%{opacity:0;transform:translateY(-140px) scale(0);}
+}
 
 .hero-inner{position:relative;z-index:2;width:100%;}
 
@@ -397,6 +422,10 @@ body.mob-open{overflow:hidden;position:fixed;width:100%;}
 .svc:hover .svc-icon{background:rgba(234,189,59,0.18);}
 .svc-title{font-family:var(--ff);font-size:16px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
 .svc-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+@media(hover:hover){
+  .svc{transition:background .2s,transform .3s;transform-style:preserve-3d;perspective:600px;}
+  .svc:hover{transform:translateY(-4px) rotateX(2deg);background:var(--bg3);}
+}
 
 /* ── HOW IT WORKS ── */
 .how-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:start;}
@@ -865,6 +894,7 @@ textarea{resize:vertical;min-height:110px;}
   .svc{padding:14px 10px;}
   .svc-icon{width:44px;height:44px;font-size:20px;}
   .svc-title{font-size:12px;}
+  .btt{bottom:20px;right:20px;width:40px;height:40px;}
 }
 
 @media(max-width:480px){
@@ -904,6 +934,15 @@ textarea{resize:vertical;min-height:110px;}
 .proof-grid{scrollbar-width:none;}
 .us-stats{scrollbar-width:none;}
 
+/* ── SCROLL PROGRESS ── */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:9999;transition:width .1s linear;width:0;pointer-events:none;}
+
+/* ── BACK TO TOP ── */
+.btt{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#07080C;border:none;cursor:pointer;z-index:400;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;transform:translateY(10px);box-shadow:0 4px 16px rgba(234,189,59,0.3);}
+.btt.show{opacity:1;pointer-events:auto;transform:none;}
+.btt:hover{background:var(--gold2);transform:translateY(-2px);}
+.btt svg{width:18px;height:18px;}
+
 /* ── FOCUS VISIBLE ── */
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-cta:focus-visible,.pkg-btn:focus-visible,.csubmit:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
@@ -914,11 +953,13 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
   .reveal{opacity:1;transform:none;}
   .hero-grid{animation:none;}
   .hero-scan{animation:none;display:none;}
+  .hero-particles span{animation:none;}
 }
 </style>
 <script>(function(w, d, t, u, o) {w[u] = w[u] || [], o.ts = (new Date).getTime();var n = d.createElement(t);n.src = "https://bat.bing.net/bat.js?ti=" + o.ti + ("uetq" != u ? "&q=" + u : ""),n.async = 1, n.onload = n.onreadystatechange = function() {var s = this.readyState;s && "loaded" !== s && "complete" !== s ||(o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad"),n.onload = n.onreadystatechange = null)};var i = d.getElementsByTagName(t)[0];i.parentNode.insertBefore(n, i);})(window, document, "script", "uetq", {ti:"343240977",enableAutoSpaTracking: true});</script>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProg"></div>
 
 <div class="cursor" id="cur"></div>
 <div class="cursor-ring" id="curR"></div>
@@ -955,12 +996,14 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
      HOME
 ══════════════════════════════════ -->
 <main>
+<noscript><style>.page{display:block!important;}.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 <div id="pg-home" class="page active">
 
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-scan"></div>
+    <div class="hero-particles"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="hero-inner wrap">
       <div class="hero-flag">
         <div class="flag-pulse"></div>
@@ -1580,7 +1623,10 @@ function go(id,push){
   if(push===undefined)push=true;
   pages.forEach(p=>document.getElementById('pg-'+p).classList.remove('active'));
   navs.forEach(n=>{if(n)document.getElementById(n).classList.remove('active');});
-  document.getElementById('pg-'+id).classList.add('active');
+  var pg=document.getElementById('pg-'+id);
+  pg.classList.add('active');
+  pg.classList.add('page-enter');
+  setTimeout(function(){pg.classList.remove('page-enter');},350);
   const idx=pages.indexOf(id);
   if(navs[idx])document.getElementById(navs[idx]).classList.add('active');
   window.scrollTo({top:0,behavior:'instant'});
@@ -1588,10 +1634,18 @@ function go(id,push){
   var wasOpen=mob.classList.contains('open');
   mob.classList.remove('open');
   var hbg=document.querySelector('.hbg');
-  if(hbg)hbg.setAttribute('aria-expanded','false');
+  if(hbg){hbg.classList.remove('open');hbg.setAttribute('aria-expanded','false');}
   if(wasOpen){document.body.classList.remove('mob-open');document.body.style.top='';}
   if(push&&pathMap[id])history.pushState({page:id},'',(pathMap[id]));
-  document.title=id==='home'?'BoltForge — Custom Software & IT Support | US Based':'BoltForge — '+id.charAt(0).toUpperCase()+id.slice(1);
+  var titles={
+    home:'BoltForge — Custom Software & IT Support | US Based',
+    services:'What We Build — Custom Web Apps, Mobile, POS, IT | BoltForge',
+    pricing:'Pricing — Own It, Grow It, Scale It | BoltForge',
+    contact:'Contact Us — Free Software Consultation | BoltForge',
+    terms:'Terms & Conditions | BoltForge',
+    refund:'Refund Policy | BoltForge'
+  };
+  document.title=titles[id]||'BoltForge';
   initReveal();
 }
 
@@ -1612,6 +1666,7 @@ function toggleMob(){
   const mob=document.getElementById('mob');
   mob.classList.toggle('open');
   const isOpen=mob.classList.contains('open');
+  document.querySelector('.hbg').classList.toggle('open');
   document.querySelector('.hbg').setAttribute('aria-expanded',isOpen);
   if(isOpen){document.body.classList.add('mob-open');document.body.dataset.scrollY=window.scrollY;document.body.style.top=(-window.scrollY)+'px';}
   else{document.body.classList.remove('mob-open');document.body.style.top='';window.scrollTo(0,parseInt(document.body.dataset.scrollY||'0'));}
@@ -1649,6 +1704,44 @@ function initReveal(){
 }
 initReveal();
 
+// Animated counters
+function animateCounters(){
+  document.querySelectorAll('.metric-val').forEach(function(el){
+    if(el.dataset.counted)return;
+    var rect=el.getBoundingClientRect();
+    if(rect.top<window.innerHeight&&rect.bottom>0){
+      el.dataset.counted='1';
+      var text=el.textContent;
+      var match=text.match(/(\d+)/);
+      if(!match)return;
+      var target=parseInt(match[1]);
+      var prefix=text.substring(0,text.indexOf(match[1]));
+      var suffix=text.substring(text.indexOf(match[1])+match[1].length);
+      var em=el.querySelector('em');
+      var start=0;var dur=1200;var startTime=null;
+      function step(ts){
+        if(!startTime)startTime=ts;
+        var p=Math.min((ts-startTime)/dur,1);
+        p=1-Math.pow(1-p,3);// easeOutCubic
+        var val=Math.round(start+p*(target-start));
+        if(em){em.textContent=val;} else {el.textContent=prefix+val+suffix;}
+        if(p<1)requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+  });
+}
+window.addEventListener('scroll',animateCounters);
+animateCounters();
+
+// Scroll progress
+window.addEventListener('scroll',function(){
+  var h=document.documentElement.scrollHeight-window.innerHeight;
+  var p=h>0?(window.scrollY/h)*100:0;
+  document.getElementById('scrollProg').style.width=p+'%';
+  document.getElementById('btt').classList.toggle('show',window.scrollY>500);
+});
+
 // Contact form → BoltForge HQ leads pipeline
 function submitForm(){
   const fn=document.getElementById('cf-fn').value.trim();
@@ -1677,5 +1770,8 @@ function submitForm(){
   });
 }
 </script>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 </body>
 </html>
