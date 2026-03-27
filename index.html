@@ -655,7 +655,7 @@ textarea{resize:vertical;min-height:110px;}
 
   /* -- Body text: concise on mobile -- */
   .sec-sub{font-size:14px;line-height:1.55;margin-bottom:28px;max-width:100%;}
-  .svc-intro .sec-sub{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .svc-intro .sec-sub{display:none;}
 
   /* -- Heading scale-down -- */
   .problem-head{font-size:clamp(28px,7.5vw,42px);margin-bottom:14px;}
@@ -667,74 +667,122 @@ textarea{resize:vertical;min-height:110px;}
   .cta-big{font-size:clamp(36px,10vw,58px);margin-bottom:18px;}
   .cta-band p[style]{font-size:15px!important;margin-bottom:28px!important;}
 
-  /* -- Problem cards: visual card layout, hide body text -- */
+  /* ═══ VISUAL ACCENTS — mobile-only graphic elements ═══ */
+
+  /* -- Gradient glow behind hero heading -- */
+  .hero-h1{position:relative;z-index:1;}
+  .hero-h1::before{content:'';position:absolute;top:50%;left:-10%;width:120%;height:120%;
+    background:radial-gradient(ellipse at center,rgba(234,189,59,0.1) 0%,transparent 65%);
+    transform:translateY(-50%);z-index:-1;pointer-events:none;}
+
+  /* -- Decorative gold line between overline and heading -- */
+  .overline{margin-bottom:12px;position:relative;padding-bottom:12px;}
+  .overline::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:2px;
+    background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;}
+
+  /* -- Problem cards: red left accent bar, icon badges -- */
   .problem-grid{grid-template-columns:1fr;margin-top:28px;gap:0;}
-  .prob-card{padding:20px;display:flex;align-items:center;gap:16px;}
-  .prob-num{font-size:48px;margin-bottom:0;flex-shrink:0;width:56px;text-align:center;}
-  .prob-title{font-size:16px;margin-bottom:0;}
+  .prob-card{padding:18px 18px 18px 22px;display:flex;align-items:center;gap:16px;
+    border-left:3px solid var(--red);position:relative;}
+  .prob-card::before{transform:none!important;}
+  .prob-num{font-size:44px;margin-bottom:0;flex-shrink:0;width:50px;text-align:center;}
+  .prob-title{font-size:15px;margin-bottom:0;line-height:1.35;}
   .prob-body{display:none;}
 
-  /* -- Solution strip -- */
-  .solution-strip{margin-top:24px;padding:24px 20px;flex-direction:column;gap:14px;text-align:center;}
+  /* -- Solution strip: gradient border glow -- */
+  .solution-strip{margin-top:24px;padding:24px 20px;flex-direction:column;gap:14px;text-align:center;
+    background:linear-gradient(135deg,rgba(234,189,59,0.12),rgba(234,189,59,0.04));
+    border:1px solid rgba(234,189,59,0.3);}
   .solution-strip .btn-primary{width:100%;justify-content:center;}
 
-  /* -- Service grid: 2-column icon cards, hide descriptions -- */
+  /* -- Service grid: 2-col icon cards with gradient hover bg -- */
   .svc-grid{grid-template-columns:1fr 1fr;}
-  .svc{padding:18px 14px;text-align:center;}
-  .svc-icon{margin:0 auto 10px;width:52px;height:52px;font-size:24px;border-radius:12px;}
-  .svc-title{font-size:13px;letter-spacing:.03em;margin-bottom:0;}
+  .svc{padding:20px 14px;text-align:center;position:relative;overflow:hidden;}
+  .svc::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;
+    background:var(--gold);transition:all .3s;transform:translateX(-50%);}
+  .svc:hover::after{width:60%;}
+  .svc-icon{margin:0 auto 10px;width:56px;height:56px;font-size:26px;border-radius:14px;
+    background:linear-gradient(135deg,rgba(234,189,59,0.15),rgba(234,189,59,0.05));
+    border:1px solid rgba(234,189,59,0.25);box-shadow:0 4px 20px rgba(234,189,59,0.08);}
+  .svc-title{font-size:12px;letter-spacing:.04em;margin-bottom:0;font-weight:700;}
   .svc-desc{display:none;}
   .svc-intro{gap:14px;margin-bottom:24px;}
 
-  /* -- How It Works: compact visual steps -- */
+  /* -- How It Works: visual timeline with gold connector line -- */
   .how-layout{gap:28px;}
-  .step{padding:16px 0;gap:14px;grid-template-columns:44px 1fr;}
-  .step-n{font-size:36px;}
+  .steps{position:relative;padding-left:8px;}
+  .steps::before{content:'';position:absolute;left:29px;top:16px;bottom:16px;width:2px;
+    background:linear-gradient(to bottom,var(--gold),rgba(234,189,59,0.1));pointer-events:none;}
+  .step{padding:16px 0;gap:14px;grid-template-columns:44px 1fr;position:relative;z-index:1;}
+  .step-n{font-size:36px;background:var(--bg);position:relative;z-index:2;}
   .step-title{font-size:16px;margin-bottom:2px;}
   .step-body{font-size:12px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 
-  /* -- Proof cards: visual, truncated -- */
+  /* -- Proof cards: visual accent, truncated -- */
   .proof-grid{gap:12px;}
-  .proof{padding:20px 18px;border-left:3px solid var(--gold);border-radius:0 var(--rl) var(--rl) 0;}
+  .proof{padding:20px 18px;border-left:3px solid var(--gold);border-radius:0 var(--rl) var(--rl) 0;
+    background:linear-gradient(135deg,var(--bg2),var(--bg3));}
   .proof-title{font-size:18px;margin-bottom:4px;}
   .proof-tag{font-size:10px;padding:3px 8px;margin-bottom:10px;}
   .proof-body{display:none;}
   .proof-chips{gap:4px;}
   .chip{font-size:10px;padding:3px 7px;}
 
-  /* -- US section: hide descriptions, bigger stat values -- */
+  /* -- US section: icon-like checkmarks, visual stat cards -- */
   .us-list{gap:10px;margin-top:20px;}
   .us-text span{display:none;}
   .us-text strong{font-size:14px;}
-  .us-check{width:22px;height:22px;font-size:9px;}
+  .us-check{width:26px;height:26px;font-size:10px;
+    background:linear-gradient(135deg,rgba(234,189,59,0.2),rgba(234,189,59,0.08));
+    border:1px solid rgba(234,189,59,0.35);box-shadow:0 2px 8px rgba(234,189,59,0.1);}
   .us-item{align-items:center;gap:12px;}
   .us-stats{gap:10px;}
-  .us-stat{padding:20px 16px;text-align:center;}
+  .us-stat{padding:20px 16px;text-align:center;
+    background:linear-gradient(160deg,var(--bg3),var(--bg4));
+    border:1px solid rgba(234,189,59,0.1);}
+  .us-stat:first-child{border-color:rgba(61,142,255,0.2);}
   .us-stat-val{font-size:42px;}
   .us-stat-label{font-size:11px;line-height:1.4;}
 
-  /* -- Hero metrics: 2x2 visual grid -- */
-  .hero-metrics{margin-top:36px;padding-top:28px;gap:0;display:grid;grid-template-columns:1fr 1fr;}
-  .metric{padding:16px 12px;text-align:center;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
+  /* -- Hero metrics: 2x2 grid with subtle gold accents -- */
+  .hero-metrics{margin-top:36px;padding-top:0;gap:0;display:grid;grid-template-columns:1fr 1fr;
+    border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;border-top:2px solid var(--gold);}
+  .metric{padding:20px 14px;text-align:center;border-bottom:1px solid var(--border);border-right:1px solid var(--border);
+    background:var(--bg2);}
   .metric:nth-child(2n){border-right:none;}
   .metric:nth-child(n+3){border-bottom:none;}
   .metric-val{font-size:40px;}
   .metric-label{font-size:10px;letter-spacing:.05em;}
 
+  /* -- CTA band: radial glow on mobile -- */
+  .cta-band::before{background:radial-gradient(ellipse 90% 70% at 50% 50%,rgba(234,189,59,0.1) 0%,transparent 60%);}
+
+  /* -- Section dividers: gradient instead of flat line -- */
+  .divider{border:none;height:2px;background:linear-gradient(90deg,transparent,var(--goldbd),transparent);}
+
   /* -- Overlines -- */
-  .overline{font-size:12px;letter-spacing:.14em;margin-bottom:8px;}
+  .overline{font-size:12px;letter-spacing:.14em;}
 
   /* -- Contact form -- */
   .contact-layout{gap:28px;}
   .frow{grid-template-columns:1fr;}
-  .cform-wrap{padding:22px 16px;}
+  .cform-wrap{padding:22px 16px;border:1px solid rgba(234,189,59,0.15);
+    background:linear-gradient(170deg,var(--bg2),var(--bg3));}
   .cform-title{font-size:24px;}
   .cform-sub{font-size:13px;margin-bottom:22px;}
   input:not([type="checkbox"]),select,textarea{font-size:16px;padding:14px 15px;}
   .csubmit{font-size:14px;padding:14px;}
 
-  /* -- Pricing: compact card style -- */
+  /* -- Contact info points: hide descriptions on mobile -- */
+  .cinfo-pts{gap:16px;margin-top:24px;}
+  .cpt-icon{width:36px;height:36px;font-size:15px;
+    background:linear-gradient(135deg,rgba(234,189,59,0.18),rgba(234,189,59,0.06));
+    border:1px solid rgba(234,189,59,0.3);}
+
+  /* -- Pricing: compact card style with visual accents -- */
+  .pkg-grid{gap:0;border:1px solid rgba(234,189,59,0.15);overflow:hidden;}
   .pkg{padding:28px 20px;}
+  .pkg.feat{background:linear-gradient(170deg,var(--bg3),var(--bg4));border-left:3px solid var(--gold);}
   .pkg-name{font-size:34px;}
   .pkg-price{font-size:48px;}
   .pkg-line{font-size:12px;margin-bottom:18px;padding-bottom:18px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
@@ -764,7 +812,9 @@ textarea{resize:vertical;min-height:110px;}
   /* -- Services page: full service list -- */
   .fsvc{grid-template-columns:1fr;gap:16px;padding:32px 0;}
   .fsvc:hover{padding-left:0;}
-  .fsvc-icon{width:48px;height:48px;font-size:22px;margin-bottom:12px;}
+  .fsvc-icon{width:48px;height:48px;font-size:22px;margin-bottom:12px;
+    background:linear-gradient(135deg,rgba(234,189,59,0.15),rgba(234,189,59,0.05));
+    box-shadow:0 4px 16px rgba(234,189,59,0.08);}
   .fsvc-title{font-size:22px;margin-bottom:6px;}
   .fsvc-desc{font-size:13px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .fsvc-list{grid-template-columns:1fr;gap:4px;}
@@ -777,7 +827,9 @@ textarea{resize:vertical;min-height:110px;}
   .legal-body h3{font-size:16px;margin:24px 0 8px;}
 
   /* -- Modular section on services page -- */
-  .modular{padding:28px 20px;margin-top:40px;}
+  .modular{padding:28px 20px;margin-top:40px;
+    background:linear-gradient(160deg,var(--bg2),var(--bg3));
+    border:1px solid rgba(234,189,59,0.2);}
   .mod-inner{gap:24px;}
 }
 
@@ -831,9 +883,11 @@ textarea{resize:vertical;min-height:110px;}
   /* US stats: horizontal scroll */
   .us-stats{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;-webkit-overflow-scrolling:touch;}
   .us-stat{min-width:44vw;flex-shrink:0;scroll-snap-align:start;}
-  /* How-it-works: icon-like step numbers */
+  /* How-it-works: centered cards */
+  .steps::before{display:none;}
+  .steps{padding-left:0;}
   .step{grid-template-columns:1fr;gap:4px;padding:14px 0;text-align:center;border-bottom-color:var(--border);}
-  .step-n{font-size:42px;margin-bottom:2px;}
+  .step-n{font-size:42px;margin-bottom:2px;background:transparent;}
   .step-title{font-size:15px;}
   .step-body{-webkit-line-clamp:1;font-size:11px;}
   .step:hover{padding-left:0;}
@@ -890,10 +944,10 @@ button:focus-visible,.btn-primary:focus-visible,.btn-ghost:focus-visible,.nav-ct
   <button class="hbg" onclick="toggleMob()" aria-label="Menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-menu" id="mob">
-  <a href="/" class="nav-btn" onclick="event.preventDefault();go('home');toggleMob()">Home</a>
-  <a href="/services" class="nav-btn" onclick="event.preventDefault();go('services');toggleMob()">What We Build</a>
-  <a href="/pricing" class="nav-btn" onclick="event.preventDefault();go('pricing');toggleMob()">Pricing</a>
-  <a href="/contact" class="nav-cta" onclick="event.preventDefault();go('contact');toggleMob()">Get a Free Quote</a>
+  <a href="/" class="nav-btn" onclick="event.preventDefault();go('home')">Home</a>
+  <a href="/services" class="nav-btn" onclick="event.preventDefault();go('services')">What We Build</a>
+  <a href="/pricing" class="nav-btn" onclick="event.preventDefault();go('pricing')">Pricing</a>
+  <a href="/contact" class="nav-cta" onclick="event.preventDefault();go('contact')">Get a Free Quote</a>
 </div>
 
 <!-- ══════════════════════════════════
